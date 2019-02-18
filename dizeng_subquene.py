@@ -6,3 +6,4 @@ def dizeng_subquene(queue):
                 lit[index]=lit[jndex]+1
     return max(lit)
 print(dizeng_subquene([3,1,4,1,5,9,2,6,5]))
+# nlogn 算法 https://blog.csdn.net/u013178472/article/details/54926531
