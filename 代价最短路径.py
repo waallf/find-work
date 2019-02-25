@@ -29,15 +29,9 @@ class solution():
                     self.mat[k][j]=min(self.mat[k][j],self.mat[k][i]+self.mat[i][j])
                     self.state[k][j]=k if self.mat[k][j]<=self.mat[k][i]+self.mat[i][j] else i
 
-        spend = min(self.mat[-1][:])#找出花费最小的一条
-        if spend>self.m:
-            return -1
-        else:
-            result=[]
-            start =self.mat[-1].index(spend)
-            for i in range(self.n-1,-1,-1):
-                result.append(self.state[i][start])
-                start = result[-1]
+        for i in range(n):
+            print(self.mat[0][i])
+           
 
 s = solution([2,3,5,1,3,6,1],m=6,n=7)
 print(s.daijialujing())
