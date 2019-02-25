@@ -11,7 +11,8 @@ class solution():
         '''
         self.m= m
         self.n = n
-        self.dp = [[0 for _ in range(2**n)] for _ in range(m+1)]# dp[i][j]表示第i行j的方法的总数
+        self.dp = [[0 for _ in range(2**n)] for _ in range(m+1)]# dp[i][j]表示第i行j的方法的总数,因为第0
+        #行的状态要设置为0，所以需要行数+1  
     def dfs(self,lim,state,num,i):
         '''
         :param lim: 目前的列数
