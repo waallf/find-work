@@ -1,0 +1,49 @@
+#####1
+n = int(input().strip(' '))
+li = []
+for i in range(n):
+    li.append([float(i) for i in input().strip('').split(" ")])
+if n==0:
+    print(0.0)
+else:
+    nan = [0. for _ in range(n)]
+    bunan = [0. for _ in range(n)]
+    nan[0] = 0.0
+    bunan[0] = li[0][0]
+    if n>1:
+        nan[1] = li[1][1]
+        bunan[1] = max(nan[0],bunan[0])+ li[1][0]
+        for i in range(2,n):
+            nan[i]=max(nan[i-2],bunan[i-2])+li[i][1]
+            bunan[i]= max(nan[i-1],bunan[i-1])+li[i][0]
+        print(max(bunan[-1],nan[-1]))
+    else:
+        print(li[0][0])
+        
+######2
+n,m = [int(i) for i in input().strip().split(" ")]
+M = []
+for i in range(n):
+    M.append([int(i) for i in input().strip().split(" ")])
+
+rows = len(M)
+cols = len(M[0])
+start = 0
+result = []
+while rows > 2 * start and cols > 2 * start:
+    endx = rows - 1 - start
+    endy = cols - 1 - start
+    for i in range(start, endy + 1):
+        result.append(M[start][i])
+    if start < endx:
+        for i in range(start + 1, endx + 1):
+            result.append(M[i][endy])
+    if start < endx and start < endy:
+        for i in range(endy - 1, start - 1, -1):
+            result.append(M[endx][i])
+    if start < endx - 1 and start < endy:
+        for i in range(endx - 1, start, -1):
+            result.append(M[i][start])
+
+    start += 1
+print(*result)
